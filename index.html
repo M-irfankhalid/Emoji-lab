@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Emoji Lab — Mix and match emojis to create unique sticker combinations. Free online emoji mixer powered by Google's Emoji Kitchen.">
+    <title>Emoji Lab — Mix Emojis, Create Stickers</title>
+    <meta name="theme-color" content="#FF6B6B">
+
+    <!-- Social sharing -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Emoji Lab — Mix Emojis, Create Stickers">
+    <meta property="og:description" content="Mix any two emojis and get a brand-new sticker. Free, no sign-up. Powered by Google's Emoji Kitchen.">
+    <meta property="og:url" content="https://irfankhalid.com/emoji-lab/">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Emoji Lab — Mix Emojis, Create Stickers">
+    <meta name="twitter:description" content="Mix any two emojis and get a brand-new sticker. Free, no sign-up.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧪</text></svg>">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ─── Header / Nav ─── -->
+    <header class="header">
+        <div class="header__inner">
+            <div class="header__brand">
+                <span class="header__logo" aria-hidden="true">🧪</span>
+                <div>
+                    <h1 class="header__title">Emoji Lab</h1>
+                    <p class="header__tagline">Mix emojis. Make magic.</p>
+                </div>
+            </div>
+            <nav class="header__nav" aria-label="Main">
+                <a href="#mixer" class="header__link">Mixer</a>
+                <a href="#how-it-works" class="header__link">How It Works</a>
+                <a href="#features" class="header__link">Features</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ─── Hero ─── -->
+    <section class="hero">
+        <div class="hero__inner">
+            <div class="hero__text">
+                <span class="hero__badge">✨ Free Online Tool</span>
+                <h2 class="hero__headline">Create Unique Emoji<br>Sticker Combos</h2>
+                <p class="hero__sub">Mix any two emojis together and get a brand-new sticker. Powered by Google's Emoji Kitchen — copy, download, and share instantly.</p>
+                <a href="#mixer" class="hero__cta">Start Mixing <span aria-hidden="true">→</span></a>
+            </div>
+            <div class="hero__visual" aria-hidden="true">
+                <div class="hero__bubble hero__bubble--1">😍</div>
+                <div class="hero__bubble hero__bubble--2">+</div>
+                <div class="hero__bubble hero__bubble--3">🔥</div>
+                <div class="hero__bubble hero__bubble--4">=</div>
+                <div class="hero__bubble hero__bubble--5">❤️‍🔥</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── Main Mixer ─── -->
+    <main class="main" id="mixer">
+
+        <!-- Result Stage -->
+        <section class="stage" aria-label="Mix result">
+            <div class="stage__formula">
+                <div class="stage__slot" id="slotA">
+                    <span class="stage__slot-emoji" id="slotAEmoji">❓</span>
+                </div>
+                <span class="stage__op">+</span>
+                <div class="stage__slot" id="slotB">
+                    <span class="stage__slot-emoji" id="slotBEmoji">❓</span>
+                </div>
+                <span class="stage__op">=</span>
+                <div class="stage__result" id="resultCard" aria-busy="false">
+                    <div class="stage__state" id="resultPlaceholder">
+                        <span class="stage__state-icon">🎨</span>
+                        <p>Pick emojis below!</p>
+                    </div>
+                    <div class="stage__state hidden" id="resultLoading">
+                        <div class="spinner"></div>
+                    </div>
+                    <img class="stage__result-img hidden" id="resultImg" alt="Mixed emoji sticker" crossorigin="anonymous">
+                    <div class="stage__state hidden" id="resultError">
+                        <span class="stage__state-icon">😿</span>
+                        <p>No artwork found for this pair yet!</p>
+                    </div>
+                </div>
+            </div>
+            <p class="visually-hidden" id="liveStatus" role="status" aria-live="polite"></p>
+            <div class="stage__actions hidden" id="actionButtons">
+                <button class="btn btn--accent" id="btnCopyImg" title="Copy image to clipboard">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                    Copy Image
+                </button>
+                <button class="btn btn--outline" id="btnCopyLink" title="Copy CDN link">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                    Copy Link
+                </button>
+                <button class="btn btn--outline" id="btnDownload" title="Download PNG file">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    Download
+                </button>
+                <button class="btn btn--ghost" id="btnRandom" title="Random combo (R)">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/></svg>
+                    Shuffle
+                </button>
+            </div>
+        </section>
+
+        <!-- Dual Pickers -->
+        <section class="pickers" aria-label="Emoji pickers">
+            <div class="picker" id="pickerA">
+                <h2 class="picker__title"><span class="picker__badge picker__badge--a">1</span> Choose First Emoji</h2>
+                <div class="picker__search-wrap">
+                    <svg class="picker__search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                    <input type="text" class="picker__search" id="searchA" placeholder="Search…" autocomplete="off" aria-label="Search first emoji by name">
+                </div>
+                <div class="picker__tabs" id="tabsA" role="group" aria-label="Filter first emoji by category"></div>
+                <div class="picker__grid" id="gridA" aria-label="First emoji"></div>
+                <p class="picker__empty hidden" id="emptyA">No results 🤷</p>
+            </div>
+            <div class="picker" id="pickerB">
+                <h2 class="picker__title"><span class="picker__badge picker__badge--b">2</span> Choose Second Emoji</h2>
+                <div class="picker__search-wrap">
+                    <svg class="picker__search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                    <input type="text" class="picker__search" id="searchB" placeholder="Search…" autocomplete="off" aria-label="Search second emoji by name">
+                </div>
+                <div class="picker__tabs" id="tabsB" role="group" aria-label="Filter second emoji by category"></div>
+                <div class="picker__grid" id="gridB" aria-label="Second emoji"></div>
+                <p class="picker__empty hidden" id="emptyB">No results 🤷</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ─── How It Works ─── -->
+    <section class="section how" id="how-it-works">
+        <div class="section__inner">
+            <span class="section__badge">🛠️ Simple Process</span>
+            <h2 class="section__title">How It Works</h2>
+            <p class="section__sub">Three easy steps to your perfect emoji sticker</p>
+            <div class="steps">
+                <div class="step">
+                    <div class="step__icon">
+                        <span class="step__num">1</span>
+                    </div>
+                    <h3 class="step__title">Pick First Emoji</h3>
+                    <p class="step__desc">Choose the emoji that sets the main emotion or theme — a face, animal, heart, or object.</p>
+                </div>
+                <div class="step__arrow" aria-hidden="true">→</div>
+                <div class="step">
+                    <div class="step__icon">
+                        <span class="step__num">2</span>
+                    </div>
+                    <h3 class="step__title">Pick Second Emoji</h3>
+                    <p class="step__desc">Add contrast, humour, or warmth. Mix a smiley with fire, pair a cat with a heart — get creative!</p>
+                </div>
+                <div class="step__arrow" aria-hidden="true">→</div>
+                <div class="step">
+                    <div class="step__icon">
+                        <span class="step__num">3</span>
+                    </div>
+                    <h3 class="step__title">Copy & Share</h3>
+                    <p class="step__desc">Copy the sticker image to your clipboard or download the PNG. Paste it anywhere — WhatsApp, Discord, Slack!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── Features ─── -->
+    <section class="section features" id="features">
+        <div class="section__inner">
+            <span class="section__badge">💎 Why Emoji Lab?</span>
+            <h2 class="section__title">Features</h2>
+            <p class="section__sub">Everything you need for the perfect emoji mix</p>
+            <div class="features__grid">
+                <div class="feature-card">
+                    <span class="feature-card__icon">⚡</span>
+                    <h3 class="feature-card__title">Instant Mixing</h3>
+                    <p class="feature-card__desc">Results appear in real-time as you pick emojis. No waiting, no loading screens.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-card__icon">📋</span>
+                    <h3 class="feature-card__title">One-Click Copy</h3>
+                    <p class="feature-card__desc">Copy the actual image to your clipboard — paste directly into any chat or social app.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-card__icon">⬇️</span>
+                    <h3 class="feature-card__title">Download PNG</h3>
+                    <p class="feature-card__desc">Save stickers as high-quality PNG files to use wherever you want.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-card__icon">🎲</span>
+                    <h3 class="feature-card__title">Random Combos</h3>
+                    <p class="feature-card__desc">Hit shuffle or press R to discover unexpected and hilarious combinations.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-card__icon">🔍</span>
+                    <h3 class="feature-card__title">Search & Filter</h3>
+                    <p class="feature-card__desc">Find any emoji instantly with keyword search and category tabs.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-card__icon">🌐</span>
+                    <h3 class="feature-card__title">100% Free</h3>
+                    <p class="feature-card__desc">No sign-up, no ads, no limits. Works entirely in your browser.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── Footer ─── -->
+    <footer class="footer">
+        <div class="footer__inner">
+            <div class="footer__brand">
+                <span class="footer__logo" aria-hidden="true">🧪</span>
+                <span class="footer__name">Emoji Lab</span>
+            </div>
+            <p class="footer__credit">Built by <a href="https://irfankhalid.com" target="_blank" rel="noopener noreferrer" class="footer__link">irfankhalid.com</a></p>
+            <p class="footer__note">Sticker artwork powered by Google's Emoji Kitchen</p>
+        </div>
+    </footer>
+
+    <!-- Toast -->
+    <div class="toast hidden" id="toast" role="status"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
